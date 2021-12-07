@@ -1,22 +1,27 @@
+// make sure I linked correctly
 console.log("look, I can still link a file!")
 
+// declare some global variables we'll need
 var currentDay = $("#currentDay");
 
 var savedTasks = localStorage.getItem("dailyTasks");
 
 var dailyTasks;
 
+// if we have saved tasks, we want them
 if (!savedTasks) {
     dailyTasks = {};
 } else {
     dailyTasks = JSON.parse(savedTasks);
 }
 
+// we want to know the "current" date, or past date in my screenshot
 currentDay.text(moment().format('MMMM Do, YYYY'));
+
 
 fillTimes();
 
-
+// generate the cards
 function generateHourCards(rowIndex, currentHour) {
 
     var row = $("<div></div>");
@@ -66,6 +71,7 @@ function generateHourCards(rowIndex, currentHour) {
     saveIcon.on("click", saveTask);
 }
 
+// label the cards
 function fillTimes() {
 
 
@@ -77,6 +83,7 @@ function fillTimes() {
 
 }
 
+// save tasks
 function saveTask(event) {
     console.log("Saved!");
 
